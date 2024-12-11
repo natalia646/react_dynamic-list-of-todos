@@ -17,20 +17,19 @@ export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [selectTodoId, setSelectTodoId] = useState<number | null>(null);
-  const [selectCaregory, setSelectCategory] = useState<SelectCategory>(
+  const [selectCategory, setSelectCategory] = useState<SelectCategory>(
     SelectCategory.all,
   );
 
   const selectedTodo = todos.find(todo => todo.id === selectTodoId);
 
-  const filtredTodos = filterTodos(todos, { selectCaregory, query });
+  const filteredTodos = filterTodos(todos, { selectCategory, query });
 
   useEffect(() => {
     setIsLoading(true);
 
     getTodos()
       .then(data => setTodos(data))
-      .catch()
       .finally(() => setIsLoading(false));
   }, []);
 
@@ -54,7 +53,7 @@ export const App: React.FC = () => {
                 <Loader />
               ) : (
                 <TodoList
-                  todos={filtredTodos}
+                  todos={filteredTodos}
                   selectTodoId={selectTodoId}
                   setSelectTodoId={setSelectTodoId}
                 />

@@ -22,7 +22,6 @@ export const TodoModal: React.FC<Props> = props => {
     if (userId) {
       getUser(userId)
         .then(data => setUser(data))
-        .catch()
         .finally(() => setLoader(false));
     }
   }, [userId]);

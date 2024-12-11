@@ -3,17 +3,17 @@ import { Todo } from '../../types/Todo';
 
 export const filterTodos = (
   todos: Todo[],
-  filters: { selectCaregory: SelectCategory; query: string },
+  filters: { selectCategory: SelectCategory; query: string },
 ): Todo[] => {
-  const { selectCaregory, query } = filters;
+  const { selectCategory, query } = filters;
 
   return todos
     .filter(todo => {
-      if (selectCaregory === SelectCategory.completed) {
+      if (selectCategory === SelectCategory.completed) {
         return todo.completed;
       }
 
-      if (selectCaregory === SelectCategory.active) {
+      if (selectCategory === SelectCategory.active) {
         return !todo.completed;
       }
 
