@@ -10,11 +10,6 @@ type Props = {
 export const TodoFilter: React.FC<Props> = props => {
   const { query, setQuery, setSelectCategory } = props;
 
-  const resetFilter = () => {
-    setQuery('');
-    setSelectCategory(SelectCategory.all);
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectCategory(event.target.value as SelectCategory);
   };
@@ -49,7 +44,7 @@ export const TodoFilter: React.FC<Props> = props => {
           <span
             className="icon is-right"
             style={{ pointerEvents: 'all' }}
-            onClick={resetFilter}
+            onClick={() => setQuery('')}
           >
             {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <button
